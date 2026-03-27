@@ -1,0 +1,53 @@
+main {
+	width: 95%;
+	margin: 0 auto;
+    border: 3px solid black;
+}
+
+.column {
+    width: 30%;
+    display: inline-block;
+	float: left;
+	margin-left: 2%;
+} 
+
+html, body {
+	background-color: #ffffff;
+}
+
+body {
+	margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #404040;
+}
+	
+h1 {
+	font-size: 300%;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2 {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/* 📱 Tablet View (>= 772px) */
+@media all and (min-width: 772px) {
+	.column {
+		width: 45%;
+	}
+	
+	img {
+		max-height: 30vh;
+	}
+}
+
+/* 💻 Pantalla grande (>= 998px) */
+@media all and (min-width: 998px) {
+	.column {
+		width: 30%;
+	}
+}
