@@ -1,53 +1,110 @@
-main {
-	width: 95%;
-	margin: 0 auto;
-    border: 3px solid black;
-}
+/* ☠️ Importar fuente estilo terror */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 
-.column {
-    width: 30%;
-    display: inline-block;
-	float: left;
-	margin-left: 2%;
-} 
-
-html, body {
-	background-color: #ffffff;
-}
-
+/* 🌑 Fondo con efecto oscuro + textura */
 body {
-	margin: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	font-weight: normal;
-	color: #404040;
+	background: radial-gradient(circle, #111 40%, #000 100%);
+	color: #d6d6d6;
+	font-family: 'Courier New', monospace;
+	overflow-x: hidden;
 }
-	
+
+/* 🧟 Niebla animada */
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 200%;
+	height: 200%;
+	background: url('https://i.imgur.com/8IuucQZ.png') repeat;
+	opacity: 0.08;
+	animation: fog 60s linear infinite;
+	pointer-events: none;
+}
+
+@keyframes fog {
+	from { transform: translate(0,0); }
+	to { transform: translate(-50%, -50%); }
+}
+
+/* 🧠 Título principal con glitch */
 h1 {
-	font-size: 300%;
-	margin: 0;
-	padding: 0;
+	font-family: 'Creepster', cursive;
+	color: #8aff00;
+	position: relative;
+	animation: flicker 2s infinite;
+	text-shadow: 0 0 5px #0f0, 0 0 20px #0f0;
 }
 
-h1, h2 {
-	text-align: center;
-	text-transform: uppercase;
-}
-
-/* 📱 Tablet View (>= 772px) */
-@media all and (min-width: 772px) {
-	.column {
-		width: 45%;
+/* ⚡ Parpadeo tipo luz fallando */
+@keyframes flicker {
+	0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+		opacity: 1;
 	}
-	
-	img {
-		max-height: 30vh;
+	20%, 24%, 55% {
+		opacity: 0.3;
 	}
 }
 
-/* 💻 Pantalla grande (>= 998px) */
-@media all and (min-width: 998px) {
-	.column {
-		width: 30%;
-	}
+/* 🩸 Subtítulos con sangre */
+h2 {
+	color: #ff2a2a;
+	text-shadow: 0 0 10px rgba(255,0,0,0.7);
+}
+
+/* 🧟 Columnas con efecto “infectado” */
+.column {
+	background: linear-gradient(145deg, #1a1a1a, #111);
+	border: 1px solid #2e2e2e;
+	box-shadow: 0 0 15px rgba(0,255,0,0.1);
+	transition: all 0.4s ease;
+	position: relative;
+}
+
+/* 👻 Hover mutante */
+.column:hover {
+	transform: scale(1.05) rotate(-1deg);
+	box-shadow: 0 0 25px rgba(0,255,0,0.5);
+}
+
+/* 🩸 Sangre goteando */
+.column::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 10%;
+	width: 80%;
+	height: 10px;
+	background: linear-gradient(to bottom, red, transparent);
+	opacity: 0.6;
+	filter: blur(2px);
+}
+
+/* 🧠 Imágenes con glitch */
+img {
+	width: 100%;
+	filter: grayscale(70%) contrast(130%) brightness(0.8);
+	mix-blend-mode: screen;
+	transition: all 0.3s;
+}
+
+img:hover {
+	filter: grayscale(0%) contrast(150%) brightness(1);
+	transform: scale(1.02);
+}
+
+/* ⚡ Efecto glitch rápido */
+img:active {
+	animation: glitch 0.2s infinite;
+}
+
+@keyframes glitch {
+	0% { transform: translate(0); }
+	20% { transform: translate(-2px, 2px); }
+	40% { transform: translate(2px, -2px); }
+	60% { transform: translate(-1px, 1px); }
+	80% { transform: translate(1px, -1px); }
+	100% { transform: translate(0); }
+}
 }
